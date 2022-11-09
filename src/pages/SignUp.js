@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const SignUp = () => {
-    const {createUser, } = useContext(AuthContext)
+    const { createUser, } = useContext(AuthContext)
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -14,11 +14,10 @@ const SignUp = () => {
         createUser(email, password)
             .then(userCredential => {
                 const user = userCredential.user;
-            console.log(user)
             })
-        .catch(err => console.error(err.type, err.message))
+            .catch(err => console.error(err.type, err.message))
 
-        
+
     }
     return (
         <div className="hero w-full my-20 text-white">
