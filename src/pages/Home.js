@@ -3,8 +3,10 @@ import Banner from './Banner';
 import HomeService from './HomeService';
 import photo from '../assets/photoGrapher.jpeg'
 import { Link } from 'react-router-dom';
+import useTitle from './hooks/useTitle';
 
 const Home = () => {
+    useTitle('Home')
     return (
         <div>
             <Banner></Banner>

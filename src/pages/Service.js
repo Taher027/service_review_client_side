@@ -3,6 +3,7 @@ import {useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import AllReviews from './AllReviews';
 
 const Service = () => {
     const service = useLoaderData();
@@ -14,7 +15,7 @@ const Service = () => {
         const form = event.target;
         const name = form.name.value;
         const email = user?.email;
-        const photo = user?.PhotoUrl || 'user not set photo';
+        const photo = user?.photoURL || 'user not set photo';
         const rating = form.rating.value;
         const message = form.message.value;
 
@@ -54,11 +55,11 @@ const Service = () => {
     
     
     return (
-        <div className='mb-10'>
+        <div className='mb-10 p-6'>
             <div class="card lg:card-side bg-base-100 shadow-xl mr-6">
                 <figure>
                     <PhotoProvider>
-                        <div className="foo">
+                        <div className="foo mr-6">
 
                             <PhotoView src={img}>
                                 <img src={img} alt="Shoes" className="rounded-xl " />
@@ -77,14 +78,16 @@ const Service = () => {
                 </div>
             </div>
             <div className="service_section">
-                <h2>Reviews</h2>
+                <h2 className='text-white text-2xl mt-10'>Here are The Reviews</h2>
+                <AllReviews></AllReviews>
 
 
-                <form onSubmit={handleReview}>
+            <h2 className='text-2xl text-white'>Please add your Review</h2>
+                <form onSubmit={handleReview} className="mt-10">
                 
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-                        <input name="Name" type="text" placeholder="Name" className="input input-ghost w-full  input-bordered" />
-                        <input name="rating" type="number" placeholder="Rating" className="input input-ghost w-full  input-bordered" required />
+                        <input name="name" type="text" required placeholder="name" className="input input-ghost w-full  input-bordered" />
+                        <input name="rating" type="number" required placeholder="Rating" className="input input-ghost w-full  input-bordered" required />
                         <input name="email" type="text" placeholder="Your email" defaultValue={user?.email} className="input input-ghost w-full  input-bordered" readOnly />
                     </div>
                     <textarea name="message" className="textarea textarea-bordered h-20 w-full mt-4" placeholder="Your Message" required></textarea>
