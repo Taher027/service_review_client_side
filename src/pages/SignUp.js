@@ -16,6 +16,8 @@ const SignUp = () => {
                 const user = userCredential.user;
             })
             .catch(err => console.error(err.type, err.message))
+        
+        form.reset()
 
 
     }
@@ -49,6 +51,7 @@ const SignUp = () => {
                         </div>
                     </form>
                     <p className='text-center'>Already have an account? <Link className='text-orange-600 font-bold' to="/login">Login</Link> </p>
+                    <button></button>
                 </div>
             </div>
         </div>

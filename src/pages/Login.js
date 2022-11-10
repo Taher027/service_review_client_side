@@ -3,8 +3,15 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
-    
+    const { login, signInWithGoogle } = useContext(AuthContext);
+    const handleGoogleSingIn = () => {
+        signInWithGoogle()
+            .then(res => {
+                const user = res.user;
+            })
+            .catch(error => console.error(error))
+    }
+
 
     const handleLogin = event => {
         event.preventDefault();
@@ -14,9 +21,9 @@ const Login = () => {
         login(email, password)
             .then(userCredential => {
                 const user = userCredential.user;
-                console.log(user);
             })
             .then(error => console.log(error));
+        form.reset()
 
     }
     return (
@@ -45,7 +52,9 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='text-center'>New to ArtSnap? please <Link className='text-orange-600 font-bold' to="/signup">Sign Up</Link> </p>
+                    <Link to={'/review'} className='flex justify-center' ><button onClick={handleGoogleSingIn} className='btn btn-primary '>Login With Google</button></Link>
                 </div>
+
             </div>
         </div>
     );
