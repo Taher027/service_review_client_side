@@ -7,7 +7,7 @@ const MyReview = () => {
     useTitle('My-Review')
     const { user } = useContext(AuthContext);
 
-    const [data, setData] = useState({});
+    const [datas, setData] = useState([]);
     useEffect(() => {
         fetch(`https://taher-alpha.vercel.app/reviews?email=${user.email}`)
             .then(res => res.json())
@@ -15,11 +15,11 @@ const MyReview = () => {
     },[user?.email])
 
     return (
-        <div>
+        <div className=' grid md:grid-cols-2 lg:grid-cols-3'>
             {
-                data.map(d => <MyReviewPage
-                    key={d._id}
-                    review={d}
+                datas.map(data => <MyReviewPage
+                    key={data._id}
+                    data={data}
                 ></MyReviewPage>
 
                 )}

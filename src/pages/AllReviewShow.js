@@ -17,7 +17,6 @@ const AllReviewShow = ({ review }) => {
             <div>
                 <p>Rating: {rating}</p>
                 <p>{message}</p>
-                <p>Rating:{rating}</p>
             </div>
         </div>
     );
