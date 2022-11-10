@@ -1,4 +1,9 @@
 * I have created a photographer website where i provide some services.
+* In this website the user can create his/her account .
+* user can Review a services or multiple services after login
+* an user can post a service for others.
+* user can see her / him own reviews 
+* user can edit or delete their own reviews.
 
 
 
