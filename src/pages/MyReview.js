@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import useTitle from './hooks/useTitle';
 import MyReviewPage from './MyReviewPage';
 
 const MyReview = () => {
+    useTitle('My-Review')
     const { user } = useContext(AuthContext);
+
     const [data, setData] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user.email}`)
+        fetch(`https://taher-alpha.vercel.app/reviews?email=${user.email}`)
             .then(res => res.json())
         .then(data=>setData(data))
     },[user?.email])
@@ -14,14 +17,12 @@ const MyReview = () => {
     return (
         <div>
             {
-                data.map(singleData => <MyReviewPage
-                    key={singleData._id}
-                    singleData={singleData}
-                >
+                data.map(d => <MyReviewPage
+                    key={d._id}
+                    review={d}
+                ></MyReviewPage>
 
-
-                </MyReviewPage>)
-            }
+                )}
         </div>
     );
 };
